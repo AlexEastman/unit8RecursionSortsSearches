@@ -7,7 +7,7 @@
 import java.awt.*;
 import javax.swing.JPanel;
 
-public class KochPanel extends JPanel
+public class TreePanel extends JPanel
 {
    private final int PANEL_WIDTH = 400;
    private final int PANEL_HEIGHT = 400;
@@ -23,7 +23,7 @@ public class KochPanel extends JPanel
    //-----------------------------------------------------------------
    //  Sets the initial fractal order to the value specified.
    //-----------------------------------------------------------------
-   public KochPanel (int currentOrder)
+   public TreePanel (int currentOrder)
    {
       current = currentOrder;
       setBackground (Color.black);
@@ -36,7 +36,7 @@ public class KochPanel extends JPanel
    //  intermediate points are computed, and each line segment is
    //  drawn as a fractal.
    //-----------------------------------------------------------------
-   public void drawFractal (int order, int x1, int y1, int x5, int y5,
+   public void drawBranch (int order, int x1, int y1, int l, int theta,
                             Graphics page)
    {
       int deltaX, deltaY, x2, y2, x3, y3, x4, y4;
@@ -48,8 +48,8 @@ public class KochPanel extends JPanel
          deltaX = x5-x1;  // distance between end points
          deltaY = y5-y1;
 
-         x2 = x1 + (deltaX)/3;  // one third
-         y2 = y1 + (deltaY)/3;
+         x2 = x1 + (int)(deltaX)/3;  // one third
+         y2 = y1 + (int)(deltaY)/3;
 
          x3 = (int) ((x1+x5)/2 + SQ * (y1-y5));  // tip of projection
          y3 = (int) ((y1+y5)/2 + SQ * (x5-x1));
