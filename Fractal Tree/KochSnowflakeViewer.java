@@ -1,24 +1,24 @@
 //********************************************************************
-//  Alex Eastman
+//  KochSnowflakeViewer.java       Author: Lewis/Loftus/Cocking
 //
 //  Demonstrates the use of recursion.
-//  
+//  @gcschmit (19 July 2014): converted from an applet to an application
 //********************************************************************
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class TreeViewer implements ActionListener
+public class KochSnowflakeViewer implements ActionListener
 {
     private final int WIDTH = 400;
     private final int HEIGHT = 500;
 
-    private final int MIN = -10, MAX = 666;
+    private final int MIN = 1, MAX = 10;
 
     private JButton increase, decrease;
     private JLabel titleLabel, orderLabel;
-    private TreePanel drawing;
+    private KochPanel drawing;
     private JPanel panel, tools;
     private JFrame frame;
 
@@ -27,17 +27,17 @@ public class TreeViewer implements ActionListener
     //-----------------------------------------------------------------
     public static void main(String[] args)
     {
-        TreeViewer viewer = new TreeViewer();
+        KochSnowflakeViewer viewer = new KochSnowflakeViewer();
     }
 
-    public TreeViewer()
+    public KochSnowflakeViewer()
     {
         tools = new JPanel ();
         tools.setLayout (new BoxLayout(tools, BoxLayout.X_AXIS));
         tools.setBackground (Color.yellow);
         tools.setOpaque (true);
 
-        titleLabel = new JLabel ("The Alex Tree");
+        titleLabel = new JLabel ("The Koch Snowflake");
         titleLabel.setForeground (Color.black);
 
         increase = new JButton (new ImageIcon ("increase.gif"));
@@ -59,14 +59,14 @@ public class TreeViewer implements ActionListener
         tools.add (Box.createHorizontalStrut (20));
         tools.add (orderLabel);
 
-        drawing = new TreePanel (1);
+        drawing = new KochPanel (1);
 
         panel = new JPanel();
         panel.add (tools);
         panel.add (drawing);
 
         frame = new JFrame();
-        frame.setTitle("Tree");
+        frame.setTitle("Knoch Snowflake");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(WIDTH, HEIGHT);
         frame.add(panel);
@@ -88,7 +88,7 @@ public class TreeViewer implements ActionListener
 
         if (order >= MIN && order <= MAX)
         {
-            orderLabel.setText ("Hail satan " + order + " times per day");
+            orderLabel.setText ("Order:" + order);
             drawing.setOrder (order);
             frame.repaint();
         }
